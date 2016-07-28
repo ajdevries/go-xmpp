@@ -380,15 +380,15 @@ func (c *Client) init(o *Options) error {
 
 				fmt.Fprintf(c.conn, "<response xmlns='%s'>%s</response>\n", nsSASL, base64.StdEncoding.EncodeToString([]byte(message)))
 
-				var rspauth saslRspAuth
-				if err = c.p.DecodeElement(&rspauth, nil); err != nil {
-					return errors.New("unmarshal <challenge>: " + err.Error())
-				}
-				b, err = base64.StdEncoding.DecodeString(string(rspauth))
-				if err != nil {
-					return err
-				}
-				fmt.Fprintf(c.conn, "<response xmlns='%s'/>\n", nsSASL)
+				// var rspauth saslRspAuth
+				// if err = c.p.DecodeElement(&rspauth, nil); err != nil {
+				// 	return errors.New("unmarshal <challenge>: " + err.Error())
+				// }
+				// b, err = base64.StdEncoding.DecodeString(string(rspauth))
+				// if err != nil {
+				//	return err
+				// }
+				// fmt.Fprintf(c.conn, "<response xmlns='%s'/>\n", nsSASL)
 				break
 			}
 		}
